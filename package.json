@@ -1,7 +1,22 @@
 {
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node bot.js"
+  },
   "dependencies": {
+    "@aave/core-v3": "^1.19.3",
     "@flashbots/ethers-provider-bundle": "^0.3.0",
+    "@openzeppelin/contracts": "^5.0.2"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
     "dotenv": "^16.4.5",
-    "ethers": "^5.7.2"
+    "ethers": "^5.7.2",
+    "hardhat": "^2.22.10"
   }
 }

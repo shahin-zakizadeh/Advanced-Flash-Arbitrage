@@ -1,7 +1,7 @@
-const { ethers } = require('ethers');
+import { ethers } from 'ethers';
 
 // Flash Loan execution logic
-async function executeFlashLoan(tokenAddress, loanAmount, dexArbitrageFunction) {
+export async function executeFlashLoan(tokenAddress, loanAmount, dexArbitrageFunction) {
     console.log(`Requesting flash loan of ${loanAmount} ${tokenAddress}`);
 
     try {
@@ -17,7 +17,6 @@ async function executeFlashLoan(tokenAddress, loanAmount, dexArbitrageFunction) 
         return profit;
     } catch (error) {
         console.error("Flash loan failed or arbitrage not profitable:", error);
+        return null;
     }
 }
-
-module.exports = { executeFlashLoan };
