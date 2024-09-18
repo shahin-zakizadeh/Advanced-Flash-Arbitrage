@@ -1,7 +1,7 @@
-const { ethers } = require('ethers');
+import { ethers } from 'ethers';
 
 // Dummy function to simulate price fetching (replace with actual DEX calls)
-async function getTokenPriceOnDex(tokenA, tokenB, dexName) {
+export async function getTokenPriceOnDex(tokenA, tokenB, dexName) {
     // Replace this with actual DEX API calls to fetch prices (e.g., Uniswap SDK, SushiSwap SDK)
     if (dexName === "Uniswap") {
         return Math.random() * 1000; // Simulated price from Uniswap
@@ -12,7 +12,7 @@ async function getTokenPriceOnDex(tokenA, tokenB, dexName) {
 }
 
 // Cross-DEX arbitrage logic
-async function checkCrossDexArbitrage(tokenAddress) {
+export async function checkCrossDexArbitrage(tokenAddress) {
     const uniswapPrice = await getTokenPriceOnDex(tokenAddress, "ETH", "Uniswap");
     const sushiSwapPrice = await getTokenPriceOnDex(tokenAddress, "ETH", "SushiSwap");
 
@@ -21,8 +21,7 @@ async function checkCrossDexArbitrage(tokenAddress) {
     // Check if there's a profitable arbitrage opportunity
     if (uniswapPrice < sushiSwapPrice) {
         console.log("Cross-DEX arbitrage detected! Buy on Uniswap, sell on SushiSwap.");
-        // Execute arbitrage logic here (flash loan, trade, etc.)
-        return true;
+        return true; // Execute arbitrage logic here (flash loan, trade, etc.)
     } else {
         console.log("No cross-DEX arbitrage opportunity detected.");
         return false;
@@ -30,7 +29,7 @@ async function checkCrossDexArbitrage(tokenAddress) {
 }
 
 // Inner arbitrage logic (within a single DEX)
-async function checkInnerArbitrageOnDex(dexName) {
+export async function checkInnerArbitrageOnDex(dexName) {
     const usdtEthPrice = await getTokenPriceOnDex("USDT", "ETH", dexName);
     const usdcEthPrice = await getTokenPriceOnDex("USDC", "ETH", dexName);
 
@@ -45,5 +44,3 @@ async function checkInnerArbitrageOnDex(dexName) {
         return false;
     }
 }
-
-module.exports = { checkCrossDexArbitrage, checkInnerArbitrageOnDex };
